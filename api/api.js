@@ -1,5 +1,5 @@
 const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI('83f1b70d652148bb9b223fd3f8275013');
+const newsapi = new NewsAPI('');
 
 newsapi.v2.topHeadlines({
   q: 'tesla',
