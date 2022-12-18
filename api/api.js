@@ -1,19 +1,47 @@
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('83f1b70d652148bb9b223fd3f8275013');
 
-// To query top headlines
-// All options passed to topHeadlines are optional, but you need to include at least one of them
 newsapi.v2.topHeadlines({
-  category: 'business,general,science,technology',
+  q: 'tesla',
+  category: 'business',
   language: 'en',
-  country: 'in'
-}).then(response => {
-  console.log(response);
-  /*
-    {
-      status: "ok",
-      articles: [...]
-    }
-  */
-});
+  country: 'us'
+}).then(function (response){
+    console.log(response)
+    response.articles.forEach(article => {
+        var div = document.createElement("div")
+        div.classList.add('card')
+        var url_id = article.url
+        div.innerHTML = url_id
+        // div.setAttribute('href', article.url);
+        div.textContent = article.title;
+        document.body.appendChild(div)
+    })
+})
+// .then (function (data){
+//     appendData(data);
+// })
+// .catch(function(err){
+//     console.log(err);
+// })
+
+// function appendData(data){
+//     var contentContainer = document.getElementById('post-content')
+//     for (var i = 0; i < data.length; i++){
+//         var div = document.createElement("div")
+//         div.innerHTML = data[i].description;
+//         contentContainer.appendChild(div);
+
+//     }
+// }
+
+// function listPosts(contentElementId){
+//     const contentElement = document.getElementById(contentElementId);
+
+//     if(!contentElement){
+//         return;
+//     }
+
+
+// }
 
